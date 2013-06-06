@@ -28,4 +28,15 @@ public class FieldTest {
 		assertTrue("label should be required", validator.hasErrors());
 		assertTrue(validator.containsMessage("validation.required", i18n("field.label")));
 	}
+	
+	@Test
+	public void typeShouldBeRequired() {
+		Field field = Fixture.from(Field.class).gimme("valid");
+		field.setType(null);
+		
+		field.validate(validator);
+		
+		assertTrue("type should be required", validator.hasErrors());
+		assertTrue(validator.containsMessage("validation.required", i18n("field.type")));
+	}
 }

@@ -6,19 +6,29 @@ import br.com.caelum.vraptor.validator.Validations;
 
 public class Field {
 	private String label;
+	private FieldType type;
 
 	public String getLabel() {
 		return label;
 	}
+	
+	public FieldType getType() {
+		return type;
+	}
 
 	public void setLabel(String label) {
 		this.label = label;
+	}
+	
+	public void setType(FieldType type) {
+		this.type = type;
 	}
 
 	public void validate(Validator validator) {
 		validator.checking(new Validations() {
 			{
 				that(notEmpty(getLabel()), "validation", "validation.required", i18n("field.label"));
+				that(getType() != null, "validation", "validation.required", i18n("field.type"));
 			}
 		});
 	}
