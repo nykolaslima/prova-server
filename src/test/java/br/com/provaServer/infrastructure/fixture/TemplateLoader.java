@@ -34,6 +34,7 @@ public class TemplateLoader {
 		public static void loadTemplates() {
 			Fixture.of(Radio.class).addTemplate("valid", new Rule() {{
 				add("label", "sex");
+				add("value", random("male", "female"));
 			}});
 		}
 	}

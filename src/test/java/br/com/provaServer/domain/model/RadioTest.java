@@ -28,4 +28,15 @@ public class RadioTest {
 		assertTrue("label should be required", validator.hasErrors());
 		assertTrue(validator.containsMessage("validation.required", i18n("radio.label")));
 	}
+	
+	@Test
+	public void valueShouldBeRequired() {
+		Radio radio = Fixture.from(Radio.class).gimme("valid");
+		radio.setValue(null);
+		
+		radio.validate(validator);
+		
+		assertTrue("value should be required", validator.hasErrors());
+		assertTrue(validator.containsMessage("validation.required", i18n("radio.value")));
+	}
 }
