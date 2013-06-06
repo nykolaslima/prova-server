@@ -10,11 +10,11 @@ public class Template {
 	public String getTitle() {
 		return title;
 	}
-
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
 	public void validate(MockValidator validator) {
 		validator.checking(new Validations() {
 			{
