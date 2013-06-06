@@ -10,6 +10,7 @@ public class Field {
 	private boolean required;
 	private boolean readOnly;
 	private String value;
+	private int maxLength;
 
 	public String getLabel() {
 		return label;
@@ -30,6 +31,10 @@ public class Field {
 	public String getValue() {
 		return value;
 	}
+	
+	public int getMaxLength() {
+		return maxLength;
+	}
 
 	public void setLabel(String label) {
 		this.label = label;
@@ -49,6 +54,10 @@ public class Field {
 	
 	public void setValue(String value) {
 		this.value = value;
+	}
+	
+	public void setMaxLength(int maxLength) {
+		this.maxLength = maxLength;
 	}
 
 	public void validate(Validator validator) {
