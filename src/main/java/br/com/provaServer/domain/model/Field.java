@@ -11,6 +11,7 @@ public class Field {
 	private boolean readOnly;
 	private String value;
 	private int maxLength;
+	private String placeholder;
 
 	public String getLabel() {
 		return label;
@@ -35,6 +36,10 @@ public class Field {
 	public int getMaxLength() {
 		return maxLength;
 	}
+	
+	public String getPlaceholder() {
+		return placeholder;
+	}
 
 	public void setLabel(String label) {
 		this.label = label;
@@ -58,6 +63,10 @@ public class Field {
 	
 	public void setMaxLength(int maxLength) {
 		this.maxLength = maxLength;
+	}
+	
+	public void setPlaceholder(String placeholder) {
+		this.placeholder = placeholder;
 	}
 
 	public void validate(Validator validator) {
