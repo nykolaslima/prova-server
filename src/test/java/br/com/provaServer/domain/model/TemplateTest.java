@@ -26,6 +26,6 @@ public class TemplateTest {
 		template.validate(validator);
 		
 		assertTrue("title should be required", validator.hasErrors());
-		validator.containsMessage("validation.required", i18n("template.title"));
+		assertTrue(validator.containsMessage("validation.required", i18n("template.title")));
 	}
 }
