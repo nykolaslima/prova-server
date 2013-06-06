@@ -26,6 +26,10 @@ public class TemplateLoader {
 			Fixture.of(Field.class).addTemplate("valid", new Rule() {{
 				add("label", random("name", "age", "last name"));
 				add("type", random(FieldType.class));
+			}})
+			.addTemplate("radioField").inherits("valid", new Rule() {{
+				add("type", FieldType.RADIO);
+				add("radios", has(2).of(Radio.class, "valid"));
 			}});
 		}
 	}
