@@ -7,6 +7,7 @@ import br.com.caelum.vraptor.validator.Validations;
 public class Field {
 	private String label;
 	private FieldType type;
+	private boolean required;
 
 	public String getLabel() {
 		return label;
@@ -15,6 +16,10 @@ public class Field {
 	public FieldType getType() {
 		return type;
 	}
+	
+	public boolean isRequired() {
+		return required;
+	}
 
 	public void setLabel(String label) {
 		this.label = label;
@@ -22,6 +27,10 @@ public class Field {
 	
 	public void setType(FieldType type) {
 		this.type = type;
+	}
+	
+	public void setRequired(boolean required) {
+		this.required = required;
 	}
 
 	public void validate(Validator validator) {
