@@ -8,6 +8,7 @@ public class Field {
 	private String label;
 	private FieldType type;
 	private boolean required;
+	private boolean readOnly;
 
 	public String getLabel() {
 		return label;
@@ -20,6 +21,10 @@ public class Field {
 	public boolean isRequired() {
 		return required;
 	}
+	
+	public boolean isReadOnly() {
+		return readOnly;
+	}
 
 	public void setLabel(String label) {
 		this.label = label;
@@ -31,6 +36,10 @@ public class Field {
 	
 	public void setRequired(boolean required) {
 		this.required = required;
+	}
+	
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
 	}
 
 	public void validate(Validator validator) {
