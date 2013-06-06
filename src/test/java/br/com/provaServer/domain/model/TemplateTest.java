@@ -3,6 +3,8 @@ package br.com.provaServer.domain.model;
 import static br.com.provaServer.infrastructure.util.TestUtil.i18n;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -27,5 +29,24 @@ public class TemplateTest {
 		
 		assertTrue("title should be required", validator.hasErrors());
 		assertTrue(validator.containsMessage("validation.required", i18n("template.title")));
+	}
+	
+	@Test
+	public void shouldHaveAtLeastOneField() {
+		Template template = Fixture.from(Template.class).gimme("valid");
+		template.setFields(null);
+		
+		template.validate(validator);
+		
+		assertTrue(validator.hasErrors());
+		assertTrue(validator.containsMessage("validation.template.atLeastOneField"));
+		
+		validator = new MockValidator();
+		template.setFields(new ArrayList<Field>());
+		
+		template.validate(validator);
+		
+		assertTrue("should have at least one field", validator.hasErrors());
+		assertTrue(validator.containsMessage("validation.template.atLeastOneField"));
 	}
 }
