@@ -4,7 +4,7 @@ import static br.com.provaServer.infrastructure.validation.util.ValidationUtil.n
 
 import java.util.List;
 
-import br.com.caelum.vraptor.util.test.MockValidator;
+import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Validations;
 
 public class Template {
@@ -27,7 +27,7 @@ public class Template {
 		this.fields = fields;
 	}
 	
-	public void validate(MockValidator validator) {
+	public void validate(Validator validator) {
 		validator.checking(new Validations() {
 			{
 				that(notEmpty(getTitle()), "validation", "validation.required", i18n("template.title"));
