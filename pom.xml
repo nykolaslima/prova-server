@@ -4,6 +4,7 @@
   <groupId>br.com.provaServer</groupId>
   <artifactId>provaServer</artifactId>
   <version>1.0</version>
+  <packaging>war</packaging>
   <name>provaServer</name>
   <repositories>
 	<repository>
@@ -37,6 +38,26 @@
   	  <groupId>org.springframework.data</groupId>
   	  <artifactId>spring-data-mongodb</artifactId>
   	  <version>1.2.1.RELEASE</version>
+  	</dependency>
+  	<dependency>
+  	  <groupId>javax.servlet</groupId>
+  	  <artifactId>servlet-api</artifactId>
+  	  <version>2.5</version>
+  	</dependency>
+  	<dependency>
+  	  <groupId>javax.servlet</groupId>
+  	  <artifactId>jstl</artifactId>
+  	  <version>1.2</version>
+  	</dependency>
+  	<dependency>
+  	  <groupId>com.google.code.gson</groupId>
+  	  <artifactId>gson</artifactId>
+  	  <version>2.2.1</version>
+  	</dependency>
+  	<dependency>
+  	  <groupId>org.codehaus.jettison</groupId>
+  	  <artifactId>jettison</artifactId>
+  	  <version>1.3.3</version>
   	</dependency>
    	<dependency>
 	  <groupId>junit</groupId>
