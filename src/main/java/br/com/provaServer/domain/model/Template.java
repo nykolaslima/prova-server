@@ -4,10 +4,16 @@ import static br.com.provaServer.infrastructure.validation.util.ValidationUtil.n
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Validations;
 
+@Document
 public class Template {
+	@Id
+	private String id;
 	private String title;
 	private List<Field> fields;
 
