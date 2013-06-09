@@ -74,4 +74,13 @@ public class TemplateController {
 		
 		result.use(Results.status()).ok();
 	}
+	
+	@Get("/templates/{idTemplate}/data")
+	public void listData(String idTemplate) {
+		result.use(Results.json()).withoutRoot().from(templateRepository.load(idTemplate)).
+			exclude("id", "title").include("fields").
+			exclude("fields.type", "fields.required", "fields.readOnly", 
+					"fields.value", "fields.maxLength", "fields.placeholder").
+			include("data").serialize();
+	}
 }
