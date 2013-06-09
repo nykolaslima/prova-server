@@ -13,7 +13,7 @@ public class Field {
 	private boolean required;
 	private boolean readOnly;
 	private String value;
-	private int maxLength;
+	private Integer maxLength;
 	private String placeholder;
 	private List<Radio> radios;
 
@@ -50,7 +50,7 @@ public class Field {
 		return value;
 	}
 
-	public int getMaxLength() {
+	public Integer getMaxLength() {
 		return maxLength;
 	}
 
@@ -82,7 +82,7 @@ public class Field {
 		this.value = value;
 	}
 
-	public void setMaxLength(int maxLength) {
+	public void setMaxLength(Integer maxLength) {
 		this.maxLength = maxLength;
 	}
 
