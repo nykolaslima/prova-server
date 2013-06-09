@@ -1,4 +1,4 @@
-package br.com.provaServer.domain.model;
+package br.com.provaServer.domain.model.template.field;
 
 import static br.com.provaServer.infrastructure.util.TestUtil.i18n;
 import static org.junit.Assert.assertTrue;
@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.MockValidator;
+import br.com.provaServer.domain.model.template.field.Radio;
 import br.com.provaServer.infrastructure.fixture.TemplateLoader;
 import br.com.six2six.fixturefactory.Fixture;
 

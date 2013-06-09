@@ -1,4 +1,4 @@
-package br.com.provaServer.domain.model;
+package br.com.provaServer.domain.model.template.field;
 
 import static br.com.provaServer.infrastructure.validation.util.ValidationUtil.notEmpty;
 

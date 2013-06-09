@@ -1,8 +1,8 @@
 package br.com.provaServer.infrastructure.fixture;
 
-import br.com.provaServer.domain.model.Field;
-import br.com.provaServer.domain.model.FieldType;
-import br.com.provaServer.domain.model.Radio;
+import br.com.provaServer.domain.model.template.field.Field;
+import br.com.provaServer.domain.model.template.field.FieldType;
+import br.com.provaServer.domain.model.template.field.Radio;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 

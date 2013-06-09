@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Validations;
-import br.com.provaServer.domain.model.Field;
+import br.com.provaServer.domain.model.template.field.Field;
 
 @Document
 public class Template {
