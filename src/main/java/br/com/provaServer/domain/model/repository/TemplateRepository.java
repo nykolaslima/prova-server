@@ -12,4 +12,6 @@ public interface TemplateRepository {
 	public List<Template> list();
 	
 	public void update(Template template);
+
+	public void remove(String id);
 }

@@ -1,6 +1,7 @@
 package br.com.provaServer.application.controller.rest;
 
 import br.com.caelum.vraptor.Consumes;
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Put;
@@ -53,5 +54,12 @@ public class TemplateController {
 		
 		templateRepository.update(template);
 		result.use(Results.json()).withoutRoot().from(templateRepository.load(template.getId())).include("fields").serialize();
+	}
+	
+	@Delete("/templates/{id}")
+	public void remove(String id) {
+		templateRepository.remove(id);
+		
+		result.use(Results.status()).ok();
 	}
 }

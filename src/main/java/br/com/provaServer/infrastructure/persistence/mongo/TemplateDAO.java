@@ -42,4 +42,9 @@ public class TemplateDAO implements TemplateRepository {
 		mongo.save(template);
 	}
 
+	@Override
+	public void remove(String id) {
+		mongo.remove(load(id));
+	}
+
 }
