@@ -2,6 +2,7 @@ package br.com.provaServer.domain.model.template;
 
 import static br.com.provaServer.infrastructure.validation.util.ValidationUtil.notEmpty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -17,6 +18,22 @@ public class Template {
 	private String id;
 	private String title;
 	private List<Field> fields;
+	private List<Data> data;
+	
+	public void validate(Validator validator) {
+		validator.checking(new Validations() {
+			{
+				that(notEmpty(getTitle()), "validation", "validation.required", i18n("template.title"));
+				that(notEmpty(getFields()), "validation", "validation.template.atLeastOneField");
+			}
+		});
+	}
+	
+	public void addData(Data data) {
+		if(this.data == null) this.data = new ArrayList<Data>();
+		
+		this.data.add(data);
+	}
 
 	public String getId() {
 		return id;
@@ -30,6 +47,10 @@ public class Template {
 		return fields;
 	}
 	
+	public List<Data> getData() {
+		return data;
+	}
+	
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -40,14 +61,5 @@ public class Template {
 	
 	public void setFields(List<Field> fields) {
 		this.fields = fields;
-	}
-	
-	public void validate(Validator validator) {
-		validator.checking(new Validations() {
-			{
-				that(notEmpty(getTitle()), "validation", "validation.required", i18n("template.title"));
-				that(notEmpty(getFields()), "validation", "validation.template.atLeastOneField");
-			}
-		});
 	}
 }

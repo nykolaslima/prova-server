@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.provaServer.domain.model.repository.TemplateRepository;
+import br.com.provaServer.domain.model.template.Data;
 import br.com.provaServer.domain.model.template.Template;
 import br.com.provaServer.domain.model.template.validation.TemplateUpdateValidation;
 
@@ -59,6 +60,17 @@ public class TemplateController {
 	@Delete("/templates/{id}")
 	public void remove(String id) {
 		templateRepository.remove(id);
+		
+		result.use(Results.status()).ok();
+	}
+	
+	@Post("/templates/{idTemplate}/data")
+	@Consumes("application/json")
+	public void addData(Data data, String idTemplate) {
+		Template template = templateRepository.load(idTemplate);
+		template.addData(data);
+		
+		templateRepository.update(template);
 		
 		result.use(Results.status()).ok();
 	}
