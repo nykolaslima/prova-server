@@ -35,9 +35,7 @@ public class TemplateController {
 	
 	@Get("/templates/{id}")
 	public void load(String id) {
-		Template template = templateRepository.load(id);
-		
-		result.use(Results.json()).withoutRoot().from(template).include("fields").serialize();
+		result.use(Results.json()).withoutRoot().from(templateRepository.load(id)).include("fields").serialize();
 	}
 	
 	@Get("/templates")
