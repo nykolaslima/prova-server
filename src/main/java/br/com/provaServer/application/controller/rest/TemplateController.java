@@ -34,10 +34,14 @@ public class TemplateController {
 	}
 	
 	@Get("/templates/{id}")
-	@Consumes("application/json")
 	public void load(String id) {
 		Template template = templateRepository.load(id);
 		
 		result.use(Results.json()).withoutRoot().from(template).include("fields").serialize();
+	}
+	
+	@Get("/templates")
+	public void list() {
+		result.use(Results.json()).withoutRoot().from(templateRepository.list()).include("fields").serialize();
 	}
 }

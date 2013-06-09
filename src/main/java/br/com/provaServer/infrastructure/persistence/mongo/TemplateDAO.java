@@ -1,5 +1,7 @@
 package br.com.provaServer.infrastructure.persistence.mongo;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -24,6 +26,11 @@ public class TemplateDAO implements TemplateRepository {
 	@Override
 	public Template load(String id) {
 		return mongo.findById(id, Template.class);
+	}
+
+	@Override
+	public List<Template> list() {
+		return mongo.findAll(Template.class);
 	}
 
 }
