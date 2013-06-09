@@ -21,4 +21,9 @@ public class TemplateDAO implements TemplateRepository {
 		mongo.insert(template);
 	}
 
+	@Override
+	public Template load(String id) {
+		return mongo.findById(id, Template.class);
+	}
+
 }
