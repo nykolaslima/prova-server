@@ -1,4 +1,4 @@
-package br.com.provaServer.domain.model;
+package br.com.provaServer.domain.model.template;
 
 import static br.com.provaServer.infrastructure.validation.util.ValidationUtil.notEmpty;
 
@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Validations;
+import br.com.provaServer.domain.model.Field;
 
 @Document
 public class Template {
@@ -17,12 +18,20 @@ public class Template {
 	private String title;
 	private List<Field> fields;
 
+	public String getId() {
+		return id;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
 	
 	public List<Field> getFields() {
 		return fields;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	public void setTitle(String title) {

@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
-import br.com.provaServer.domain.model.Template;
 import br.com.provaServer.domain.model.repository.TemplateRepository;
+import br.com.provaServer.domain.model.template.Template;
 
 @Component
 @RequestScoped
@@ -31,6 +31,15 @@ public class TemplateDAO implements TemplateRepository {
 	@Override
 	public List<Template> list() {
 		return mongo.findAll(Template.class);
+	}
+
+	@Override
+	public void update(Template template) {
+		if(load(template.getId()) == null) {
+			throw new IllegalArgumentException("There is no Template with this ID to be updated");
+		}
+		
+		mongo.save(template);
 	}
 
 }
