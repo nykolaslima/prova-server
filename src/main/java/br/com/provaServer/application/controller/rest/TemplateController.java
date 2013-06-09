@@ -32,7 +32,7 @@ public class TemplateController {
 		
 		templateRepository.add(template);
 		
-		result.nothing();
+		result.use(Results.json()).withoutRoot().from(templateRepository.load(template.getId())).include("fields").serialize();
 	}
 	
 	@Get("/templates/{id}")
