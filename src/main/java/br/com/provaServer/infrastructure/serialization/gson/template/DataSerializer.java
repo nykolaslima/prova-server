@@ -1,4 +1,4 @@
-package br.com.provaServer.infrastructure.deserialization.gson.template;
+package br.com.provaServer.infrastructure.serialization.gson.template;
 
 import java.lang.reflect.Type;
 import java.util.Map;
