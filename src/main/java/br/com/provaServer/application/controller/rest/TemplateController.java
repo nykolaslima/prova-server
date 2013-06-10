@@ -34,12 +34,12 @@ public class TemplateController {
 		
 		templateRepository.add(template);
 		
-		result.use(Results.json()).withoutRoot().from(templateRepository.load(template.getId())).include("fields").serialize();
+		result.use(Results.json()).withoutRoot().from(templateRepository.load(template.getId())).include("fields").include("fields.radios").serialize();
 	}
 	
 	@Get("/templates/{id}")
 	public void load(String id) {
-		result.use(Results.json()).withoutRoot().from(templateRepository.load(id)).include("fields").serialize();
+		result.use(Results.json()).withoutRoot().from(templateRepository.load(id)).include("fields").include("fields.radios").serialize();
 	}
 	
 	@Get("/templates")
@@ -54,7 +54,7 @@ public class TemplateController {
 		validator.onErrorSendBadRequest();
 		
 		templateRepository.update(template);
-		result.use(Results.json()).withoutRoot().from(templateRepository.load(template.getId())).include("fields").serialize();
+		result.use(Results.json()).withoutRoot().from(templateRepository.load(template.getId())).include("fields").include("fields.radios").serialize();
 	}
 	
 	@Delete("/templates/{id}")
