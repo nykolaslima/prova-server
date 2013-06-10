@@ -20,11 +20,15 @@ public class Template {
 	private List<Field> fields;
 	private List<Data> data;
 	
-	public void validate(Validator validator) {
+	public void validate(final Validator validator) {
 		validator.checking(new Validations() {
 			{
 				that(notEmpty(getTitle()), "validation", "validation.required", i18n("template.title"));
-				that(notEmpty(getFields()), "validation", "validation.template.atLeastOneField");
+				if(that(notEmpty(getFields()), "validation", "validation.template.atLeastOneField")) {
+					for(Field field : fields) {
+						field.validate(validator);
+					}
+				}
 			}
 		});
 	}

@@ -2,14 +2,16 @@ package br.com.provaServer.domain.model.template;
 
 import static br.com.provaServer.infrastructure.util.TestUtil.i18n;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.MockValidator;
-import br.com.provaServer.domain.model.template.Template;
 import br.com.provaServer.domain.model.template.field.Field;
 import br.com.provaServer.infrastructure.fixture.TemplateLoader;
 import br.com.six2six.fixturefactory.Fixture;
@@ -50,5 +52,16 @@ public class TemplateTest {
 		
 		assertTrue("should have at least one field", validator.hasErrors());
 		assertTrue(validator.containsMessage("validation.template.atLeastOneField"));
+	}
+	
+	@Test
+	public void shouldCallFieldsValidationIfThereIsAnyField() {
+		Template template = Fixture.from(Template.class).gimme("valid");
+		Field field = mock(Field.class);
+		template.setFields(Arrays.asList(field));
+		
+		template.validate(validator);
+		
+		verify(field).validate(validator);
 	}
 }
