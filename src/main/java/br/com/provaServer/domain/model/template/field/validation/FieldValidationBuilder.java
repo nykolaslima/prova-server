@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.ioc.Component;
+import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.provaServer.domain.model.template.field.Field;
 
+@Component
+@RequestScoped
 public class FieldValidationBuilder {
 
 	private Validator validator;
