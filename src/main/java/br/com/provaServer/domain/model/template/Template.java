@@ -33,6 +33,17 @@ public class Template {
 		});
 	}
 	
+	public Field getFieldWithLabel(String label) {
+		//TODO: make it cleaner, change it to use Google Collections filters
+		for(Field field : fields) {
+			if(field.getLabel().equalsIgnoreCase(label)) {
+				return field;
+			}
+		}
+		
+		return null;
+	}
+	
 	public void addData(Data data) {
 		if(this.data == null) this.data = new ArrayList<Data>();
 		

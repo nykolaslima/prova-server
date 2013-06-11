@@ -1,6 +1,8 @@
 package br.com.provaServer.domain.model.template;
 
 import static br.com.provaServer.infrastructure.util.TestUtil.i18n;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -63,5 +65,38 @@ public class TemplateTest {
 		template.validate(validator);
 		
 		verify(field).validate(validator);
+	}
+	
+	@Test
+	public void shouldReturnTheFieldWithGivingLabel() {
+		Template template = Fixture.from(Template.class).gimme("valid");
+		Field field = Fixture.from(Field.class).gimme("valid");
+		field.setLabel("myLabeledField");
+		
+		template.getFields().add(field);
+		
+		Field findedField = template.getFieldWithLabel("myLabeledField");
+		
+		assertTrue("should find field by his label", field == findedField);
+	}
+	
+	@Test
+	public void shouldReturnTheFieldWithGivingLabelCaseInsensitive() {
+		Template template = Fixture.from(Template.class).gimme("valid");
+		Field field = Fixture.from(Field.class).gimme("valid");
+		field.setLabel("myLabeledField");
+		
+		template.getFields().add(field);
+		
+		Field findedField = template.getFieldWithLabel("mYLaBelEdFiEld");
+		
+		assertTrue("should find field by his label with case insensitive comparation", field == findedField);
+	}
+	
+	@Test
+	public void shouldReturnNullWhenTryingToFindFieldWithInvalidLabel() {
+		Template template = Fixture.from(Template.class).gimme("valid");
+		
+		assertThat(template.getFieldWithLabel("myLabeledField"), nullValue());
 	}
 }
