@@ -17,6 +17,7 @@ public class TemplateLoader {
 		public static void loadTemplates() {
 			Fixture.of(br.com.provaServer.domain.model.template.Template.class).addTemplate("valid", new Rule() {{
 				add("title", regex("\\w{15}"));
+				add("fields", has(3).of(Field.class, "valid"));
 			}});
 		}
 	}
@@ -24,7 +25,7 @@ public class TemplateLoader {
 	private static class FieldTemplate {
 		public static void loadTemplates() {
 			Fixture.of(Field.class).addTemplate("valid", new Rule() {{
-				add("label", random("name", "age", "last name"));
+				add("label", regex("\\w{10}"));
 				add("type", random(FieldType.class));
 			}})
 			.addTemplate("requiredField").inherits("valid", new Rule() {{
