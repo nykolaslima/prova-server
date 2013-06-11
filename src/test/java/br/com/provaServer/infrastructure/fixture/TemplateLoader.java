@@ -27,6 +27,9 @@ public class TemplateLoader {
 				add("label", random("name", "age", "last name"));
 				add("type", random(FieldType.class));
 			}})
+			.addTemplate("requiredField").inherits("valid", new Rule() {{
+				add("required", true);
+			}})
 			.addTemplate("radioField").inherits("valid", new Rule() {{
 				add("type", FieldType.RADIO);
 				add("radios", has(2).of(Radio.class, "valid"));
