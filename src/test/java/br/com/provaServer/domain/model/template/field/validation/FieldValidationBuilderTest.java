@@ -32,4 +32,14 @@ public class FieldValidationBuilderTest {
 		assertThat(validations.get(0), is(instanceOf(RequiredValidation.class)));
 	}
 	
+	@Test
+	public void shouldBuildMaxLengthValidationIfMaxLengthAttributeIsFilled() {
+		Field field = Fixture.from(Field.class).gimme("fieldWithMaxLength");
+		
+		List<FieldValidation> validations = new FieldValidationBuilder(new MockValidator()).getValidations(field);
+		
+		assertThat(validations, hasSize(1));
+		assertThat(validations.get(0), is(instanceOf(MaxLengthValidation.class)));
+	}
+	
 }

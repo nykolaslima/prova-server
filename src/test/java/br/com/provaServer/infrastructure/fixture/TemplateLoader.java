@@ -31,6 +31,9 @@ public class TemplateLoader {
 			.addTemplate("requiredField").inherits("valid", new Rule() {{
 				add("required", true);
 			}})
+			.addTemplate("fieldWithMaxLength").inherits("valid", new Rule() {{
+				add("maxLength", 10);
+			}})
 			.addTemplate("radioField").inherits("valid", new Rule() {{
 				add("type", FieldType.RADIO);
 				add("radios", has(2).of(Radio.class, "valid"));

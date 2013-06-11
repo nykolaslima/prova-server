@@ -24,6 +24,9 @@ public class FieldValidationBuilder {
 		if(field.isRequired()) {
 			validations.add(new RequiredValidation(validator));
 		}
+		if(field.getMaxLength() != null) {
+			validations.add(new MaxLengthValidation(validator, field.getMaxLength()));
+		}
 		
 		return validations;
 	}
